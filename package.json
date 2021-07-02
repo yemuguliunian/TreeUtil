@@ -8,6 +8,7 @@
     "lint": "eslint src",
     "test": "father test"
   },
+  "files": ["lib"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yemuguliunian/TreeUtil.git"
