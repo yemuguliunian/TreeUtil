@@ -1,0 +1,28 @@
+{
+  "name": "@babe0806/tree-utils",
+  "version": "1.0.0",
+  "description": "Javascript 树处理工具",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "father build",
+    "lint": "eslint src",
+    "test": "father test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yemuguliunian/TreeUtil.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yemuguliunian/TreeUtil/issues"
+  },
+  "homepage": "https://github.com/yemuguliunian/TreeUtil#readme",
+  "devDependencies": {
+    "father": "^2.30.6",
+    "power-assert": "^1.6.1"
+  },
+  "dependencies": {
+    "lodash.clonedeep": "^4.5.0"
+  }
+}

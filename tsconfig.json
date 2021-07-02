@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "downlevelIteration": true,
+        "sourceMap": true,
+        "baseUrl": ".",
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true,
+        "declaration": true, // 生成相应的 .d.ts文件。
+        "strictNullChecks": true,
+        "noUnusedParameters": true, // 若有未使用的参数则抛错
+        "noUnusedLocals": true, // 若有未使用的局部变量则抛错
+        "noImplicitAny": true // 在表达式和声明上有隐含的 any类型时报错
+    },
+    "include": ["./.eslintrc.js", "src", "./typings.d.ts"]
+}
