@@ -17,6 +17,9 @@ function isNotEmpty(child: any): boolean {
     return Array.isArray(child) && child.length > 0;
 }
 
+// 默认子节点字段是 children
+const DEFAULT_CHILDREN_FIELD = 'children';
+
 /**
  * 解析树形数据
  * @param {Array} treeData 树结构数据
@@ -25,8 +28,11 @@ function isNotEmpty(child: any): boolean {
  * @param {Function} [options.renderNode] 自定义节点数据，返回一个新的节点数据
  * @param {Function} [options.filterNode] 过滤节点数据，返回true or false
  */
-export function parseTree(treeData: TreeNode[] = [], options: ParseTreeOption = {}): TreeNode[] {
-    const { children = 'children', renderNode, filterNode } = options;
+export function parseTreeData(
+    treeData: TreeNode[] = [],
+    options: ParseTreeOption = {},
+): TreeNode[] {
+    const { children = DEFAULT_CHILDREN_FIELD, renderNode, filterNode } = options;
     function dig(list: TreeNode[]): TreeNode[] {
         const array = [];
         for (let i = 0, len = list.length; i < len; i += 1) {
@@ -36,7 +42,10 @@ export function parseTree(treeData: TreeNode[] = [], options: ParseTreeOption = 
             let nodeClone = { ...node };
             // 如果节点内存在子节点[children]，则使用最统一子节点字段children处理
             if (children in item) {
-                delete nodeClone[children];
+                // 如果子节点数据字段不为children,则删除子节点字段数据
+                if (children !== DEFAULT_CHILDREN_FIELD) {
+                    delete nodeClone[children];
+                }
                 const child = item[children];
                 nodeClone = {
                     ...nodeClone,
@@ -60,5 +69,5 @@ export function parseTree(treeData: TreeNode[] = [], options: ParseTreeOption = 
 }
 
 export default {
-    parseTree,
+    parseTreeData,
 };
