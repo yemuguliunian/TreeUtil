@@ -37,7 +37,7 @@ export function parseTreeData(
         const array = [];
         for (let i = 0, len = list.length; i < len; i += 1) {
             const item = list[i];
-            // 若存在 renderNode，则取自定义节点内的和数据
+            // 若存在 renderNode，则使用自定义节点函数返回的节点数据
             const node = renderNode ? renderNode(item) : item;
             let nodeClone = { ...node };
             // 如果节点内存在子节点[children]，则使用最统一子节点字段children处理
@@ -53,8 +53,7 @@ export function parseTreeData(
                 };
             }
             if (filterNode) {
-                // 若存在 filterNode 则走此处逻辑
-                // filterNode(node) 返回 true，表示当前节点显示，false为不显示
+                // 若存在 filterNode 并filterNode(node) 返回 true，表示当前节点显示，false为不显示
                 // 两种情况下当前节点显示。第一种，filterNode(node)返回true；第二种，子节点存在数据
                 if (filterNode(node) || isNotEmpty(nodeClone.children)) {
                     array.push(nodeClone);
